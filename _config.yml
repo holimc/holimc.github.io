@@ -2,7 +2,7 @@ title:              林
 email:              plixclus@gmail.com
 description:        개발, 공부용 개인 블로그
 author:             holimc
-baseurl:            "/holimc.github.io"
+baseurl:            ""
 url:                "https://holimc.github.io"
 
 # Social Profiles
