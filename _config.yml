@@ -1,0 +1,30 @@
+title:              林
+email:              plixclus@gmail.com
+description:        개발, 공부용 개인 블로그
+author:             holimc
+baseurl:            ""
+url:                "https://holimc.github.io"
+
+# Social Profiles
+twitter_username:   
+github_username:    holimc
+facebook_username:  
+instagram_username:  
+linkedin_username:
+
+# Disqus shortname (not username!), You can make one from: https://disqus.com/admin/create/
+disqus: holimc
+
+
+# Add your google-analytics ID here to activate google analytics
+google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
+
+# Build settings
+markdown:           kramdown
+asset_url:          /assets
+paginate:           5
+paginate_path:      "/posts/page:num/"
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
