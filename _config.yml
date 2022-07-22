@@ -12,6 +12,10 @@ facebook_username:
 instagram_username:  
 linkedin_username:
 
+# Disqus shortname (not username!), You can make one from: https://disqus.com/admin/create/
+disqus: holimc
+
+
 # Add your google-analytics ID here to activate google analytics
 google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
 
