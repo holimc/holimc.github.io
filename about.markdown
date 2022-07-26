@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about
+background: '/img/bg-about.jpg'
 ---
 
 92년생 개발자 추호림이라고 합니다.<br>
