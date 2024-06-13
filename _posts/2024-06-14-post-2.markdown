@@ -1,0 +1,82 @@
+---
+layout: post
+title: "git"
+subtitle: 
+date: 2024-06-13 23:00:00 +0900
+categories: jekyll update
+background: '/img/posts/06.jpg'
+---
+<style>
+ol {
+    list-style-type: none;
+    counter-reset: item;
+}
+
+li::before {
+    content: counter(item) ".";
+    counter-increment: item;
+    font-weight: bold;
+    margin-right: 5px;
+}
+</style>
+<div>
+    <h1>[GIT]</h1>
+    <p>
+        GIT은 버전관리 시스템으로, 과거 CVS, SVN 등의 버전관리 시스템에서 발전한 시스템입니다. 여러명의 사용자들 간에 파일에 대한 작업을 조율하는데 사용됩니다.
+        
+그중에서 git bash는 WINDOWS에서 git을 설치하면 사용할 수 있는 유닉스 쉘 프로그램으로, 유닉스 환경에서 사용하기 때문에 linux, mac의 terminal처럼 사용이 가능한 프로그램 입니다. 
+(windows의 cmd는 리눅스처럼 CLI환경이지만, 리눅스와는 명령어 등 세부적인 부분에서 다른 부분이 존재합니다)
+따라서 linux, mac, windows 어느 환경을 사용하던 동일한 방식으로 git을 사용할 수 있다는 장점이 있으며 유닉스 쉘 프로그램이므로 유닉스를 쓰듯이 다른 사용 역시 가능하다. (자바 파일 생성, javac를 통한 컴파일 등 unix 명령어로 사용 가능)<br>
+![image](https://github.com/holimc/holimc.github.io/assets/56433374/5f791cfd-d249-442c-9373-4157ba4e14e9)<br>
+![image](https://github.com/holimc/holimc.github.io/assets/56433374/da82b35b-cd30-40dd-be6f-441e17051b94)<br>
+
+물론, gitbash가 무조건 좋은 것은 아니고 손에 맞는 툴을 사용하는게 제일 좋습니다. <br>
+
+git의 gui툴로는 git desktop, sourcetree, IDE내의 git기능, gitKraken 등 다양한 툴들이 존재하며
+특히 그중에서 git-flow 전략에 대해 친화적인 gui 툴로는 sourcetree와 gitKraken이 존재하고 있습니다.<br>
+IDE를 사용하는 방식중 git-flow에 친화적인 방식은 VScode는 git Graph를, intellij의 경우는 git flow integration plus가 추천됩니다.
+    </p>
+</div>
+
+<div>
+    <h1>[명령어]</h1>
+    <p> 
+    https://velog.io/@delilah/GitHub-Git-%EB%AA%85%EB%A0%B9%EC%96%B4-%EB%AA%A8%EC%9D%8C<br>
+    https://wikidocs.net/153871<br>
+    <br>
+    유닉스 명령어를 제외하고, 제가 주로 사용하는 명령어에 대해서만 기술하였습니다.<br>
+<ol>
+<li>git status : 현재 branch에서 변경된 파일 상태를 알 수 있습니다. new file, modified, untracked 등 현재 branch에서 변경이 이뤄진 파일을 조회할 수 있습니다.<br>   </li>
+<li>git add : commit이 일어나기 전 파일을 임시로 staging 하는 명령어입니다. git add fileA FileB 이런식으로 여러 파일을 올릴수도 있고, git add . 을 통해 모든 파일을 올릴 수도 있습니다.<br>  </li>
+<li>git restore : git restore --staged fileName 으로, staging 처리된 (add 처리한) 파일을 취소하는 명령어입니다.<br>   </li>
+<li>git commit -m "message" : 커밋입니다. -m을 통해 메세지를 남길수 있습니다.<br>  </li>
+<li>git log : 커밋 기록을 확인할 수 있습니다. --all, --oneline, --graph 등의 추가적인 명령어가 가능합니다.<br>    </li>
+<li>git reset HEAD^ : git reset을 통해 커밋을 취소할 수 있으며, 해당 명령어는 가장 최근 커밋 취소+ staging된 내역 취소 입니다. 해당 명령어 역시 soft, mixed, hard를 통해 reset의 강도를 바꿀수 있습니다.<br></li>
+<li>git push origin <branch name> : push를 통해 커밋된 내역을 밀어넣습니다. github에서는 pull request가 활성화되며, lab에서는 merge request가 활성화됩니다.<br>    </li>
+<li>git branch : branch 생성, git branch -d(또는 -D) <branch name> 을 통해 삭제도 가능합니다.<br></li>
+<li>git checkout <branch name> : 해당 branch로 이동, git switch 역시 가능합니다.<br></li>
+
+<li>git fetch : 가장 최신 commit된 코드를 임시로 내려받고, 병합은 하지 않습니다.<br></li>
+<li>git pull : 가장 최신 commit된 코드를 내려받고 병합합니다. pull로 단순히 땡기기보다는 fetch 후 diff를 통해 확인 한 뒤 병합(merge)하는게 충돌 에러 등을 방지하는데 유리합니다.<br></li>
+<li>git merge : 나눠진 branch를 하나로 병합하는 작업입니다. fast-forward merge를 통해 뒤에 있던 브랜치를 앞으로 땡겨서 병합할 수 도 있고, -no-ff를 통해 3way merge를 할 수도있습니다.<br>
+※ merge시 기록을 남겨야 하는 브랜치는, 3-way merge를 통해 기록을 남기는게 좋고 git-flow 전략 기준에서는 -no -ff 를 통해 머지를 진행하면 병합에 대한 기록을 남길 수 있습니다. </li>
+</ol>
+</p>    
+</div>
+<div>
+<h1>[예시]</h1>
+<p>
+https://www.youtube.com/watch?v=w2F8O9J1keM
+</p>
+</div>
+
+<div>
+    <h1>[참고 사이트]</h1>
+<p>
+    https://allonsyit.tistory.com/116</br>
+    https://velog.io/@bk87/Git-Flow-%EC%A0%84%EB%9E%B5-%EB%94%B0%EB%9D%BC%ED%95%B4%EB%B3%B4%EA%B8%B0</br>
+    https://velog.io/@delilah/GitHub-Git-%EB%AA%85%EB%A0%B9%EC%96%B4-%EB%AA%A8%EC%9D%8C</br>
+    https://wikidocs.net/153871</br>
+    https://codingapple.com/
+</p>
+</div>

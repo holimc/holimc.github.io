@@ -1,0 +1,146 @@
+---
+layout: post
+title: "Maven"
+subtitle: 
+date: 2024-06-13 23:00:00 +0900
+categories: jekyll update
+background: '/img/posts/06.jpg'
+---
+<style>
+ol {
+    list-style-type: none;
+    counter-reset: item;
+}
+
+li::before {
+    content: counter(item) ".";
+    counter-increment: item;
+    font-weight: bold;
+    margin-right: 5px;
+}
+</style>
+<div>
+    <h1>[메이븐이란?] </h1>
+    <p>
+        https://maven.apache.org/<br>
+        메이븐은 자카르타 터빈 프로젝트라는 자바 프로젝트의 build process를 단순화 하기 위려는 시도로 시작되었습니다.<br>
+        과거에는 Apache Ant라는 빌드 파일을 가진 여러 프로젝트가 있고 jar파일을 CVS에 올렸습니다. 이 과정에서 표준 방법공유, 구성정의, 정보게시, 빌드 균일화 등의 목표-관심 영역이 생기게 되었고 이런 목표를 기반으로 나오게된 build tool입니다.
+    </p>
+</div>
+
+<div>
+    <h1>[빌드]</h1>
+    <p> 
+    빌드의 기본적인 뜻은 소스코드를 기계어로 변환하는 과정으로, 해당 과정은 전처리-컴파일-어셈블-링크 등으로 나눠지며 소스코드를 어셈블리어->기계어로 변환하는등의 전처리를 포함한 과정을 거쳐 컴퓨터에서 읽을수 있는 파일로 변환하는 등의 모든 과정을 build라고 합니다.<br>
+    
+![빌드](https://github.com/holimc/holimc.github.io/assets/56433374/d38fddce-55a7-4b20-9ae9-7e4ec25a4753)
+    
+![빌드2](https://github.com/holimc/holimc.github.io/assets/56433374/ab93d550-0c7c-47f3-9626-1e54bee8229f)<br>
+    (java 파일을 compile 하여 class파일로 변환)<br>
+    <br>
+    java project 단위에서의 빌드는 위의 기본적인 의미에서 좀더 나아가 컴파일, 패키지, 배포 등 추가적인 과정이 포함되어 java 파일을 class파일로 변환 후 jar파일로 패키징, 이후 실행 및 배포하는 식으로 사용하고 있습니다. <br>
+    그중에서도 maven, gradle 등의 빌드 도구는 라이브러리 추가, 버젼동기화, 프로젝트생성-테스트빌드-배포 등의 과정을 도와주는 프로그램 들을 의미합니다.
+    </p>    
+</div>
+
+<div>
+<h1>[maven 설계 지향점]</h1>
+<p>
+maven은 java 기반의 프로젝트를 구축하고 관리하는데 쉽고 용이하도록 개발된 도구입니다.<br>
+maven의 가장 기본적인 목표는 빌드 프로세스 간소화, 균일한 빌드환경 제공, 프로젝트 정보 제공, 개발 지침 제공 4가지를 가지고 있습니다.<br>
+<ol>
+<li>빌드 프로세스 간소화</li>
+lifecycle에 포함된 명령어들을 통해 빌드 전 clean 같은 작업부터 compile, test, packaging 등의 작업을 쉽고 간편하게 진행할 수 있으며
+특히나 IDE와 결합되면 사용자가 직접 mvn을 통해 명령어를 사용할 필요도 없이 빌드가 되기 때문에 빌드과정이 매우 쉽고 간소화됩니다.<br>
+(참고 : https://kogle.tistory.com/224 )
+
+<li>균일한 빌드 시스템 제공</li>
+pom.xml을 통해 플러그인과 라이브러리를 관리하여 빌드하기 때문에, 해당 xml 파일에 추가한 라이브러리, 플러그인 자체와 의존성 등을 관리함으로서 빌드 관리 및 빌드 시스템의 균일성을 보장합니다.
+<br>
+<br>
+
+![만일메이븐이없다면](https://github.com/holimc/holimc.github.io/assets/56433374/48a0363e-4ec9-4f7b-aca3-7491df088124)<br>
+(메이븐이 없다면, 외부 library 관리는 저런식으로 되버릴 수 있다)
+
+<li>양질의 프로젝트 정보 제공</li>
+pom.xml을 통해 프로젝트의 버젼, 상위 프로젝트 정보, 하위 모듈 설정, 사용자 정의, profile 등을 통해 프로젝트에 대한 기본적인 정보부터 모듈등의 정보까지 확인 및 관리가 가능합니다.
+
+<li>개발 지침 제공</li>
+메이븐 프로젝트를 생성시 메이븐에서 제공하는 디렉토리 구조 등을 통해 프로젝트 생성이 쉽고, 메이븐 프로젝트의 양식을 비슷하게 맞추어 접근이 용이하며 메이븐에서 권장하는 구조를 표준화하여 제공하면서 개발에 대한 권장사항등을 제공하기도 합니다.
+</ol>
+ </p>
+ </div>
+
+<div>
+<h1>[메이븐 생명주기]</h1>
+<p>
+
+![메이븐라이프사이클](https://github.com/holimc/holimc.github.io/assets/56433374/f0d874f1-7964-46a8-a895-23ac88238de6)
+
+![메이븐라이프사이클](https://github.com/holimc/holimc.github.io/assets/56433374/e05b97cf-23c8-40f1-9dfa-1e58106b8f18)
+
+maven build lifecycle은 빌드부터 배포 중에 일어나는 작업을 생명 주기에 빗대 정의한 내용으로 각각의 라이프사이클은 3가지로 분류할 수 있습니다.
+</br>
+clean : 이전 빌드의 결과물을 지워서 프로젝트를 정리</br>
+default : 프로젝트의 개발 및 배포와 관련</br>
+site : 프로젝트의 document 작성, site생성 배포 등과 관련</br>
+</br>
+
+![스샷1_mavenlifecycle](https://github.com/holimc/holimc.github.io/assets/56433374/8339aa84-7f72-43ca-bdce-8eadd87e1be4)<br>
+각각의 라이프 사이클에는 연속된 여러개의 페이즈(phase)가 존재하고 있습니다.
+각 페이즈는 특정 작업에 대한 책임들을 가지고 있으며, 각 페이즈는 독립적이지 않고 연속적-순차적으로 실행됩니다. 예를 들면 'mvn deploy' 를 실행하면 deploy 라는 페이즈만 실행 되는것이 아닌, 컴파일부터 모든 페이즈가 진행됩니다. <br>
+또한 각 페이즈는 특정 작업에 대한 책임(소스코드를 컴파일, 컴파일된 소스코드를 jar나 war로 패키징 하는 등 각 페이즈의 작업에 대한 책임)이 존재하며, 각각의 페이즈는 연속되어있는 goal로 이루어져 있습니다. <br>
+<br>
+![스샷2_pluginlibrary](https://github.com/holimc/holimc.github.io/assets/56433374/c050afee-0c3f-43d7-bda5-a806051c20ed)<br>
+<br>
+
+![image](https://github.com/holimc/holimc.github.io/assets/56433374/7920b4e2-eb58-4b76-9da2-ee4ff2495aca)<br>
+goal은 하나의 세부적인 작업, 처리해야할 task 라고 할수있습니다. 그리고 각 goal을 위한 플러그인이 존재하며, 위의 젠킨스 버젼 관리 플러그인을 보면 deploy:deploy라는 배포와 관련된 goal과 관련되어있습니다.
+</br>
+</p>
+</div>
+
+<div>
+<h1>[그 외 주요기능]</h1>
+<p>
+아파치 메이븐의 공식 페이지에서 말한 가장 핵심적인 가치는 위의 4가지이지만, 그 외에도 많은 기능들을 제공하고 있습니다.<br>
+그중에서 추가적으로 설명하려는 두가지는 '멀티 모듈 프로젝트' 와 'profile을 이용한 서버 환경 분할' 기능입니다.
+<br>
+
+![image](https://github.com/holimc/holimc.github.io/assets/56433374/e8bd3fbd-b817-40e0-88c0-1ebdfb73d28a)
+<br>
+(멀티모듈 참고 사이트 : https://techblog.woowahan.com/2637/ ) </br>
+multi-module project 란 단일 프로젝트를 모듈 단위로 나누어 공통적인 기능은 공통 모듈에, 각각의 고유한 기능 및 해당 부분에서만 사용되는 기능은 세부 모듈에 구현을 할 수도 있고, 빌드 옵션에 설정을 줌으로서 특정 프로젝트(모듈)만 빌드를 할 수 있습니다.</br> 
+이런 멀티모듈 기능을 통해 중복 코드를 분리하여 줄일 수 도 있고, 여러 프로젝트를 하나의 IDE를 통해 실행하는 등의 사용이 가능합니다.
+
+<br>
+
+![image](https://github.com/holimc/holimc.github.io/assets/56433374/81dacf73-c689-42b9-aaf4-08d49a9b1d06)<br>
+(profile 참고 사이트 : https://blog.naver.com/linegamedev/220068468083)
+(profile 참고 사이트 : https://minkwon4.tistory.com/163)
+
+profile을 통한 서버 환경의 분할 경우는 pom.xml에 profiles를 등록하여 배포 서버에 대한 환경 구성을 활용할 수 있는 기능으로, 각자 별개의 properties를 가지게 하여 각각의 세부 설정 파일을 지정하여 static이나 jar파일 등을 다르게 생성할 수도 있습니다.<br>
+예를 들어서 DB를 3개로 나누어 사용한다고 가정시, <br>
+develop라는 단계는 개발 단계에서 사용할 DB는 개발 테스트용 더미 DB, test라는 단계에서 사용할 DB는 다른 사람들과 작업물을 취합하고 QA등에 사용하기 위한 단계의 DB, 마지막으로 demo라는 DB에는 실제 데이터를 넣어 시연 등에서 사용할 수 있게 여러개로 나누어 사용할 수 있습니다. <br>
+이처럼 사용시, 개발측에서는 테스트를 위한 더미값을 집어넣을 수도 있고 DB에 직접 쿼리를 사용할 때에도 문제가 생길 여지가 적으며 실제 데모서버는 DBA를 통해 데이터를 좀더 체계적으로 관리하거나, 더미데이터 혹은 삭제/변경으로 인한 에러 등을 줄이는데에도 도움을 받을 수 있습니다.
+</p>
+</div>
+
+<div>
+<h1>[기타]</h1>
+<p>
+https://kitty-geno.tistory.com/100
+maven의 lifecycle-phase-goal 에 해당되는 내역은, 젠킨스를 통한 빌드 과정에서도 사용 및 확인 할 수 있습니다.
+</p>
+</div>
+
+<div>
+    <h1>[참고 사이트]</h1>
+<p>
+    https://www.bogotobogo.com/Java/tutorials/Maven/Apache-Maven-Lifecycle.php</br>
+    https://jake-seo-dev.tistory.com/102</br>
+    https://goddaehee.tistory.com/199</br>
+    https://jhyonhyon.tistory.com/68</br>
+
+</p>
+</div>
